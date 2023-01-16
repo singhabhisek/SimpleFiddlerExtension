@@ -1,0 +1,21 @@
+
+Commands to execute
+=======================
+
+dotnet new sln
+
+dotnet new classlib -o FiddlerExtensions
+
+dotnet sln add FiddlerExtensions
+
+dotnet build
+
+
+Check .NET Runetime versions
+===============================
+
+Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Client
+
+reg query "HKLM\SOFTWARE\Microsoft\Net Framework Setup\NDP" /s
+
+Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP' -Recurse | Get-ItemProperty -Name version -EA 0 | Where { $_.PSChildName -Match '^(?!S)\p{L}'} | Select PSChildName, version
