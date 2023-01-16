@@ -19,3 +19,12 @@ Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Client
 reg query "HKLM\SOFTWARE\Microsoft\Net Framework Setup\NDP" /s
 
 Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP' -Recurse | Get-ItemProperty -Name version -EA 0 | Where { $_.PSChildName -Match '^(?!S)\p{L}'} | Select PSChildName, version
+
+
+Debugging
+============
+
+To debug Fiddler extensions you should first of all turn on verbose output in Fiddler. Type this in the QuickExec box which you’ll find under the list of requests in Fiddler:
+
+prefs set fiddler.debug.extensions.showerrors True
+prefs set fiddler.debug.extensions.verbose True
